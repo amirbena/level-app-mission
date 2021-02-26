@@ -49,12 +49,14 @@ const CustomTable = () => {
     const headers = ["מזהה", "כותרת", "תאריך סיום"];
     const onTextChange = e => {
         const { value } = e.target;
+        dispatch(changeFiltredText(value));
         if (value === "") {
-            return;
+            setFilteredMissions(missions);
+            return
         }
         const filteredMissions = missions.filter(mission => mission.content.startsWith(value));
         setFilteredMissions(filteredMissions);
-        dispatch(changeFiltredText(value));
+        
     }
 
 
