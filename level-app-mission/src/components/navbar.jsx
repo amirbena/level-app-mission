@@ -1,8 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import {makeStyles} from '@material-ui/styles'
+import { makeStyles } from '@material-ui/styles'
 import { setPopupSeen } from "../actions/visibilty-actions"
-import { AppBar, Toolbar, Typography, Slide, useScrollTrigger, Button } from '@material-ui/core';
+import { AppBar, Toolbar, Typography, Slide, useScrollTrigger, Button, Grid } from '@material-ui/core';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     },
     button: {
         position: "relative",
-        left: "10%",
+        left: "11%",
         background: 'linear-gradient(45deg, #FF5733 30%, #DC7633 90%)',
         color: "white"
     }
@@ -32,17 +32,24 @@ const Navbar = () => {
     const dispatch = useDispatch();
     const classes = useStyles();
     return (
-        <HideOnScroll>
-            <AppBar>
-                <Toolbar>
-                    <Typography variant="h4" className={classes.header}>מנהל משימות</Typography>
-                    <Button onClick={() => dispatch(setPopupSeen(true))} color="primary" className={classes.button}>
-                        הוספת משימה
-            </Button>
-                </Toolbar>
+        <Grid container>
+            <HideOnScroll>
+                <AppBar>
+                    <Toolbar>
+                        <Grid item xs={10}>
+                            <Typography variant="h4" className={classes.header}>מנהל משימות</Typography>
+                        </Grid>
+                        <Grid item xs={2}>
+                            <Button onClick={() => dispatch(setPopupSeen(true))} color="primary" className={classes.button}>
+                                הוספת משימה
+                         </Button>
+                        </Grid>
 
-            </AppBar>
-        </HideOnScroll>
+                    </Toolbar>
+
+                </AppBar>
+            </HideOnScroll>
+        </Grid>
     );
 }
 
