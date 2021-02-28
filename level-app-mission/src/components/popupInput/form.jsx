@@ -58,7 +58,6 @@ const Form = () => {
             const id = uuid();
             const checked = false;
             const mission = { ...values, id, startDate, checked }
-            console.log(mission);
             dispatch(addMission(mission));
         }
     })

@@ -10,7 +10,7 @@ const dictionary = {
         writeMissionsLocalStorage(missions);
         return {
             ...state,
-            missions: [...missions],
+            missions,
             missionInput: initialMissionInput,
             popupSeen: false
         }
@@ -47,8 +47,6 @@ const dictionary = {
             }
         }
         let filtered = state.missions;
-        console.log(filtered.length);
-        console.log(missionsToDelete.length);
         if (missionsToDelete.length === filtered.length) {
             filtered = [];
             writeMissionsLocalStorage([]);

@@ -10,7 +10,8 @@ import {
 import Row from './tableRow';
 import { changeFiltredText } from '../../actions/mission-table-actions';
 import { setSureDelete } from '../../actions/visibilty-actions';
-const useStyles = makeStyles((theme) => ({
+
+const useStyles = makeStyles(({
     startText: {
         marginTop: "10%",
         marginLeft: "5%",
@@ -54,15 +55,17 @@ const CustomTable = () => {
             setFilteredMissions(missions);
             return
         }
+        
+        
         const filteredMissions = missions.filter(mission => mission.content.startsWith(value));
         setFilteredMissions(filteredMissions);
-        
+
     }
 
 
     useEffect(() => {
-
-    }, [])
+        setFilteredMissions(missions);
+    }, [missions])
     const buttonOnClick = () => {
         dispatch(setSureDelete(true));
     }
@@ -91,7 +94,7 @@ const CustomTable = () => {
                 }}
             />
             {
-                filteredMissions.length ?
+                filteredMissions.length>0 ?
                     <>
                         <TableContainer className={classes.table} component={Paper}>
                             <Table aria-label="collapsible table">

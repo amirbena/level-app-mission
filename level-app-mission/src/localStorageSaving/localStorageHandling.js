@@ -12,9 +12,7 @@ export const writeMissionsLocalStorage = missions => {
 export const getInitialMissions = () => {
     const stringifiedArray = localStorage.getItem(MISSION_LOCAL_STORAGE);
     if (!stringifiedArray) {
-        const emptyArray = [];
-        localStorage.setItem(MISSION_LOCAL_STORAGE, JSON.stringify(emptyArray));
-        return emptyArray;
+        return [];
     }
     return JSON.parse(stringifiedArray);
 }
