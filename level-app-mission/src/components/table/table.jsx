@@ -66,6 +66,7 @@ const CustomTable = () => {
     useEffect(() => {
         setFilteredMissions(missions);
     }, [missions])
+    
     const buttonOnClick = () => {
         dispatch(setSureDelete(true));
     }
